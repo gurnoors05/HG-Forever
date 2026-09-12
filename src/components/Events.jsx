@@ -9,7 +9,8 @@ const EventCard = ({ title, date, time, details, venue, address, country, photo,
     textAlign: 'center', 
     display: 'flex', 
     flexDirection: 'column', 
-    height: '100%',
+    height: '820px', /* Forces all cards to be exactly the same height */
+    width: '100%',
     margin: '0 auto',
     maxWidth: '400px'
   }}>
@@ -111,6 +112,7 @@ export default function Events() {
 
   return (
     <section className="section-container" style={{ paddingTop: '0' }}>
+      <h2 className="script-font text-maroon" style={{ fontSize: '4rem', marginBottom: '50px', textAlign: 'center', fontWeight: 'normal' }}>Wedding Events</h2>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '60px' }}>
         {events.map((ev, i) => <EventCard key={i} {...ev} />)}
       </div>
