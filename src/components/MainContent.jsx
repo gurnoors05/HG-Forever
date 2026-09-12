@@ -1,7 +1,6 @@
 import Invocation from './Invocation';
 import ScratchCard from './ScratchCard';
 import Countdown from './Countdown';
-import OurStory from './OurStory';
 import Events from './Events';
 import { Blessings, RSVP, Footer } from './FooterSections';
 import './MainContent.css';
@@ -18,7 +17,6 @@ export default function MainContent({ isVisible }) {
       <Invocation />
       <ScratchCard />
       <Countdown />
-      <OurStory />
       <Events />
       <Blessings />
       <RSVP />

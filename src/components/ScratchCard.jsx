@@ -126,7 +126,8 @@ export default function ScratchCard() {
             cursor: 'pointer',
             transition: 'opacity 1.5s ease-out',
             opacity: isRevealed ? 0 : 1,
-            pointerEvents: isRevealed ? 'none' : 'auto'
+            pointerEvents: isRevealed ? 'none' : 'auto',
+            touchAction: 'none'
           }}
           onMouseDown={() => { isDrawing.current = true; }}
           onMouseUp={() => { isDrawing.current = false; }}
@@ -134,7 +135,7 @@ export default function ScratchCard() {
           onMouseMove={scratch}
           onTouchStart={() => { isDrawing.current = true; }}
           onTouchEnd={() => { isDrawing.current = false; }}
-          onTouchMove={(e) => { e.preventDefault(); scratch(e); }}
+          onTouchMove={(e) => { scratch(e); }}
         />
 
         {/* Post-reveal golden sparkles animation */}
