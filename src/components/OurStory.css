@@ -1,0 +1,30 @@
+.our-story-section {
+  padding: 100px 20px;
+}
+
+.story-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story-text-container {
+  text-align: center;
+}
+
+.story-title {
+  font-size: 4.5rem;
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.story-paragraphs p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+

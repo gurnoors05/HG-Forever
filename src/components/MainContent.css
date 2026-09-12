@@ -1,0 +1,6 @@
+.main-content-wrapper {
+  background-color: var(--bg-dark);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
