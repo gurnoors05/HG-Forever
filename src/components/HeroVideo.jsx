@@ -54,6 +54,7 @@ export default function HeroVideo({ onVideoComplete, onVideoPlay }) {
         ref={desktopVideoRef}
         className={`bg-video desktop-video ${!isLoading ? 'visible' : ''}`}
         playsInline
+        muted
         onEnded={handleVideoEnd}
       >
         <source src="/IMG_0358.mp4" type="video/mp4" />

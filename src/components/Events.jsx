@@ -5,14 +5,14 @@ const EventCard = ({ title, date, time, details, venue, address, country, photo,
     backgroundColor: '#FFFFFF', 
     borderRadius: '15px', 
     boxShadow: '0 10px 30px rgba(0,0,0,0.05)', 
-    padding: '40px 20px', 
+    padding: '40px 15px', 
     textAlign: 'center', 
     display: 'flex', 
     flexDirection: 'column', 
-    height: '820px', /* Forces all cards to be exactly the same height */
+    height: '950px', /* Increased height to accommodate uncropped photos */
     width: '100%',
     margin: '0 auto',
-    maxWidth: '400px'
+    maxWidth: '450px' /* Added a little more width */
   }}>
     <h3 className="script-font text-gold" style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 'normal' }}>{title}</h3>
     
@@ -27,8 +27,8 @@ const EventCard = ({ title, date, time, details, venue, address, country, photo,
     </div>
 
     {photo && (
-      <div style={{ width: '100%', height: '300px', overflow: 'hidden', borderRadius: '10px', marginBottom: '30px' }}>
-        <img src={photo} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div style={{ width: '100%', marginBottom: '30px' }}>
+        <img src={photo} alt={title} style={{ width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'contain', borderRadius: '20px' }} />
       </div>
     )}
 
@@ -59,8 +59,8 @@ export default function Events() {
   const events = [
     { 
       title: 'Ring Ceremony', 
-      date: '11 NOVEMBER 2026', 
-      time: 'WEDNESDAY • 6 PM', 
+      date: '10 NOVEMBER 2026', 
+      time: 'TUESDAY • 6 PM', 
       venue: 'Lake House', 
       address: 'Ludhiana', 
       country: 'India',
