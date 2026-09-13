@@ -17,6 +17,23 @@ export default function AudioPlayer({ forcePlay, isVisible }) {
     }
   }, [forcePlay]);
 
+  // High-precision gapless looping to cut out inherent MP3 silence padding
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const interval = setInterval(() => {
+      // If within 0.1s of the end, skip the trailing silence and jump back
+      if (audio.duration && audio.currentTime >= audio.duration - 0.1) {
+        // Skip the first 50ms (0.05s) of the file to avoid the leading MP3 silence
+        audio.currentTime = 0.05; 
+        audio.play().catch(e => console.log(e));
+      }
+    }, 20); // Check every 20ms for extreme precision
+
+    return () => clearInterval(interval);
+  }, []);
+
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
