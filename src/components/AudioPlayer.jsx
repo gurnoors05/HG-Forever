@@ -17,23 +17,6 @@ export default function AudioPlayer({ forcePlay, isVisible }) {
     }
   }, [forcePlay]);
 
-  // Gapless looping hack to prevent the tiny pause at the end of MP3s
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleTimeUpdate = () => {
-      // If we are within 0.4 seconds of the end of the track, instantly loop back to the start
-      if (audio.duration && audio.currentTime >= audio.duration - 0.4) {
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log(e));
-      }
-    };
-
-    audio.addEventListener('timeupdate', handleTimeUpdate);
-    return () => audio.removeEventListener('timeupdate', handleTimeUpdate);
-  }, []);
-
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -48,7 +31,7 @@ export default function AudioPlayer({ forcePlay, isVisible }) {
   return (
     <div className={`floating-audio-player ${isVisible ? 'visible' : 'hidden'}`} onClick={togglePlay}>
       <audio ref={audioRef} loop>
-        <source src="/bg_music_piano.mp3" type="audio/mpeg" />
+        <source src="/bg_music_piano_new.mp3" type="audio/mpeg" />
       </audio>
       
       <div className={`vinyl-record ${isSpinning ? 'spinning' : ''}`}>
