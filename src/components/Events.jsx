@@ -79,7 +79,7 @@ export default function Events() {
       mapLink: 'https://share.google/sTJxZYnW1AUugHium' 
     },
     { 
-      title: 'Jago', 
+      title: 'DJ Night', 
       date: '14 NOVEMBER 2026', 
       time: 'SATURDAY • 7 PM ONWARDS', 
       venue: 'Our Residence', 
