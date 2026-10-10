@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import HeroVideo from './components/HeroVideo';
 import MainContent from './components/MainContent';
 import AudioPlayer from './components/AudioPlayer';
+import Header from './components/Header';
 import './index.css';
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         onVideoPlay={() => setGlobalPlay(true)}
       />
       
+      <Header />
+
       <MainContent isVisible={videoFinished} />
     </>
   );

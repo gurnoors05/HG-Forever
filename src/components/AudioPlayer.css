@@ -39,7 +39,7 @@
 .vinyl-center {
   width: 25px;
   height: 25px;
-  background-color: var(--maroon, #722F37);
+  background-color: var(--burgundy, #702D40);
   border-radius: 50%;
   display: flex;
   justify-content: center;

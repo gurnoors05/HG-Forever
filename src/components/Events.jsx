@@ -2,21 +2,22 @@ import React from 'react';
 
 const EventCard = ({ title, date, time, details, venue, address, country, photo, mapLink }) => (
   <div style={{ 
-    backgroundColor: '#FFFFFF', 
-    borderRadius: '15px', 
-    boxShadow: '0 10px 30px rgba(0,0,0,0.05)', 
+    backgroundColor: 'var(--ivory)', 
+    border: '1px solid var(--gold)',
+    borderRadius: '8px', 
+    boxShadow: '0 10px 30px rgba(0,0,0,0.15)', 
     padding: '40px 15px', 
     textAlign: 'center', 
     display: 'flex', 
     flexDirection: 'column', 
-    height: '950px', /* Increased height to accommodate uncropped photos */
+    height: '950px', 
     width: '100%',
     margin: '0 auto',
-    maxWidth: '450px' /* Added a little more width */
+    maxWidth: '450px' 
   }}>
     <h3 className="script-font text-gold" style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 'normal' }}>{title}</h3>
     
-    <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+    <div className="sans-font" style={{ color: 'var(--chocolate)', opacity: 0.9, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
       <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{date}</p>
       <p>{time}</p>
       {details && (
@@ -32,13 +33,13 @@ const EventCard = ({ title, date, time, details, venue, address, country, photo,
       </div>
     )}
 
-    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '5px' }}>Venue</p>
-      <p className="text-gold" style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>{venue}</p>
-      <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '10px' }}>{address}</p>
-      <p className="text-maroon" style={{ letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem', marginBottom: '20px' }}>{country}</p>
+    <div className="sans-font" style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <p style={{ fontSize: '0.7rem', color: 'var(--chocolate)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '5px', opacity: 0.8 }}>Venue</p>
+      <p className="text-gold serif-font" style={{ fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>{venue}</p>
+      <p style={{ color: 'var(--chocolate)', opacity: 0.9, fontSize: '0.9rem', marginBottom: '10px' }}>{address}</p>
+      <p style={{ color: 'var(--chocolate)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem', marginBottom: '20px' }}>{country}</p>
       
-      <a href={mapLink} target="_blank" rel="noreferrer" style={{ 
+      <a href={mapLink} target="_blank" rel="noreferrer" className="sans-font" style={{ 
         display: 'inline-block', 
         padding: '10px 25px', 
         border: '1px solid var(--border-color)', 
@@ -48,7 +49,7 @@ const EventCard = ({ title, date, time, details, venue, address, country, photo,
         fontSize: '0.8rem', 
         letterSpacing: '1px', 
         transition: 'all 0.3s' 
-      }} onMouseOver={(e) => { e.target.style.backgroundColor = 'var(--bg-dark)'; }} onMouseOut={(e) => { e.target.style.backgroundColor = 'transparent'; }}>
+      }} onMouseOver={(e) => { e.target.style.backgroundColor = 'var(--chocolate)'; e.target.style.color = '#FFFFFF'; }} onMouseOut={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'var(--gold)'; }}>
         <span style={{ marginRight: '8px' }}>📍</span> View on Maps
       </a>
     </div>
@@ -111,12 +112,14 @@ export default function Events() {
   ];
 
   return (
-    <section className="section-container" style={{ paddingTop: '0' }}>
-      <h2 className="script-font text-maroon" style={{ fontSize: '4rem', marginBottom: '50px', textAlign: 'center', fontWeight: 'normal' }}>Wedding Events</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '60px' }}>
-        {events.map((ev, i) => <EventCard key={i} {...ev} />)}
-      </div>
-    </section>
+    <div id="events" style={{ backgroundColor: 'var(--burgundy)', width: '100vw', margin: '0 calc(-50vw + 50%)', padding: '100px 0' }}>
+      <section className="section-container" style={{ paddingTop: '0', paddingBottom: '0' }}>
+        <h2 className="script-font text-ivory" style={{ fontSize: '4rem', marginBottom: '50px', textAlign: 'center', fontWeight: 'normal' }}>Wedding Events</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '60px' }}>
+          {events.map((ev, i) => <EventCard key={i} {...ev} />)}
+        </div>
+      </section>
+    </div>
   );
 }
 

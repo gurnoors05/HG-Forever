@@ -16,18 +16,18 @@ export default function ScratchCard() {
 
     // Create a shiny gold foil gradient
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, '#C29B4F');
-    gradient.addColorStop(0.2, '#E8D388');
-    gradient.addColorStop(0.5, '#D4AF37');
-    gradient.addColorStop(0.8, '#F9E596');
-    gradient.addColorStop(1, '#B08833');
+    gradient.addColorStop(0, '#3D4432'); // Deep Olive
+    gradient.addColorStop(0.2, '#73785A'); // Sage Olive Green
+    gradient.addColorStop(0.5, '#C5A66B'); // Antique Champagne Gold
+    gradient.addColorStop(0.8, '#73785A'); // Sage Olive Green
+    gradient.addColorStop(1, '#3D4432'); // Deep Olive
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     // Draw some random "sparkles" (little bright dots) into the canvas foil
     for (let i = 0; i < 60; i++) {
-      ctx.fillStyle = Math.random() > 0.5 ? '#FFFFFF' : '#FFF3B0';
+      ctx.fillStyle = Math.random() > 0.5 ? '#E9DFCD' : '#C5A66B';
       ctx.beginPath();
       ctx.arc(
         Math.random() * canvas.width, 
@@ -90,9 +90,10 @@ export default function ScratchCard() {
   };
 
   return (
-    <section className="section-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <p style={{ fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>A Special Surprise</p>
-      <h2 className="text-maroon" style={{ fontSize: '1.5rem', marginBottom: '3rem', letterSpacing: '2px', fontWeight: 'normal', textTransform: 'uppercase', textAlign: 'center' }}>
+    <div style={{ backgroundColor: 'var(--ivory)', width: '100vw', margin: '0 calc(-50vw + 50%)', padding: '100px 0' }}>
+      <section className="section-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 0, paddingBottom: 0 }}>
+        <p className="sans-font" style={{ fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>A Special Surprise</p>
+        <h2 className="text-burgundy serif-font" style={{ fontSize: '1.5rem', marginBottom: '3rem', letterSpacing: '2px', fontWeight: 'normal', textTransform: 'uppercase', textAlign: 'center' }}>
         Scratch the heart to reveal our wedding date
       </h2>
       
@@ -110,9 +111,9 @@ export default function ScratchCard() {
       }}>
         
         {/* Hidden content underneath */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: '#FFFFFF', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 1 }}>
-          <h3 className="script-font text-maroon" style={{ fontSize: '3rem', margin: 0, marginTop: '-20px' }}>15th November</h3>
-          <p style={{ fontSize: '1.5rem', color: 'var(--text-muted)', letterSpacing: '4px', margin: '5px 0 0 0' }}>2026</p>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'var(--text-muted)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 1 }}>
+          <h3 className="script-font text-burgundy" style={{ fontSize: '3rem', margin: 0, marginTop: '-20px' }}>15th November</h3>
+          <p className="sans-font" style={{ fontSize: '1.5rem', color: 'var(--chocolate)', letterSpacing: '4px', margin: '5px 0 0 0' }}>2026</p>
         </div>
 
         {/* The scratchable canvas on top */}
@@ -150,7 +151,8 @@ export default function ScratchCard() {
         )}
       </div>
 
-      <p style={{ marginTop: '30px', fontSize: '0.9rem', color: 'var(--gold)', letterSpacing: '2px', textTransform: 'uppercase', transition: 'opacity 0.5s', opacity: isRevealed ? 0 : 1 }}>Scratch to reveal! ✨</p>
-    </section>
+        <p className="sans-font" style={{ marginTop: '30px', fontSize: '0.9rem', color: 'var(--gold)', letterSpacing: '2px', textTransform: 'uppercase', transition: 'opacity 0.5s', opacity: isRevealed ? 0 : 1 }}>Scratch to reveal! ✨</p>
+      </section>
+    </div>
   );
 }

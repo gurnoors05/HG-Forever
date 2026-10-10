@@ -1,13 +1,14 @@
 :root {
-  --bg-dark: #F9F8F3;
-  --bg-light: #FFFFFF;
-  --gold: #C29B4F;
-  --gold-light: #D4AF37;
-  --text-light: #722F37; /* maroon */
-  --text-muted: #5A5A5A;
-  --border-color: #EBD988;
-  --cream: #FCFBF4;
-  --maroon: #722F37;
+  --chocolate: #3D4432; /* Deep Olive Green */
+  --burgundy: #73785A; /* Sage Olive Green */
+  --gold: #C5A66B; /* Antique Champagne Gold */
+  --ivory: #F7F0E4; /* Warm Ivory */
+  --dark-text: #34382D; /* Dark Text */
+  
+  --bg-dark: var(--chocolate);
+  --bg-light: var(--ivory);
+  --text-muted: #E9DFCD; /* Soft Champagne */
+  --border-color: var(--gold);
 }
 
 * {
@@ -17,31 +18,40 @@
 }
 
 body {
-  font-family: 'Playfair Display', serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--chocolate);
+  color: var(--ivory);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide scrollbar for a cleaner look */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+/* Elegant Typography Classes */
+h1, h2, h3, h4, h5, h6, .serif-font {
+  font-family: 'Playfair Display', serif;
 }
 
 .script-font {
   font-family: 'Great Vibes', cursive;
+}
+
+.sans-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Hide scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--chocolate);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--burgundy);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
 }
 
 a {
@@ -56,10 +66,7 @@ a {
   text-align: center;
 }
 
-.text-gold {
-  color: var(--gold);
-}
-
-.text-maroon {
-  color: var(--maroon);
-}
+.text-gold { color: var(--gold); }
+.text-burgundy { color: var(--burgundy); }
+.text-dark { color: var(--chocolate); }
+.text-ivory { color: var(--ivory); }

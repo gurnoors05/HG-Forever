@@ -36,36 +36,38 @@ export default function Countdown() {
 
   const TimerBox = ({ value, label }) => (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px' }}>
-      <div style={{ 
-        backgroundColor: '#FCFBF4', // cream 
-        border: '1px solid #EAE3CD', 
-        borderRadius: '8px', 
+        <div className="serif-font" style={{ 
+        backgroundColor: 'var(--chocolate)', 
+        border: '1px solid var(--gold)', 
+        borderRadius: '4px', 
         width: '100px', 
         height: '110px', 
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        fontSize: '2.5rem', 
-        color: 'var(--gold)',
-        boxShadow: '0 4px 15px rgba(0,0,0,0.03)'
+        fontSize: '3rem', 
+        color: 'var(--ivory)',
+        boxShadow: 'inset 0 0 10px rgba(201,167,103,0.1)'
       }}>
         {value}
       </div>
-      <p style={{ marginTop: '15px', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '3px' }}>{label}</p>
+      <p className="sans-font" style={{ marginTop: '15px', fontSize: '0.75rem', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '3px' }}>{label}</p>
     </div>
   );
 
   return (
-    <section className="section-container" style={{ textAlign: 'center', paddingBottom: '100px' }}>
-      <h2 className="script-font text-maroon" style={{ fontSize: '4rem', marginBottom: '4rem', fontWeight: 'normal' }}>The Big Day Approaches</h2>
-      
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '15px' }}>
-        <TimerBox value={timeLeft.days} label="Days" />
-        <TimerBox value={timeLeft.hours} label="Hours" />
-        <TimerBox value={timeLeft.minutes} label="Minutes" />
-        <TimerBox value={timeLeft.seconds} label="Seconds" />
-      </div>
-    </section>
+    <div id="countdown" style={{ backgroundColor: 'var(--chocolate)', width: '100vw', margin: '0 calc(-50vw + 50%)' }}>
+      <section className="section-container" style={{ textAlign: 'center', padding: '100px 20px' }}>
+        <h2 className="script-font text-gold" style={{ fontSize: '4rem', marginBottom: '4rem', fontWeight: 'normal' }}>The Big Day Approaches</h2>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '15px' }}>
+          <TimerBox value={timeLeft.days} label="Days" />
+          <TimerBox value={timeLeft.hours} label="Hours" />
+          <TimerBox value={timeLeft.minutes} label="Minutes" />
+          <TimerBox value={timeLeft.seconds} label="Seconds" />
+        </div>
+      </section>
+    </div>
   );
 }
 
