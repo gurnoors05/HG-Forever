@@ -104,6 +104,10 @@ export function Footer() {
             <p style={{ color: 'var(--ivory)', fontSize: '0.8rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px', opacity: 0.8 }}>Harmeet Singh</p>
             <a href="tel:+917009067423" style={{ color: 'var(--gold)', fontSize: '1.1rem', letterSpacing: '2px' }}>+91 70090 67423</a>
           </div>
+          <div>
+            <p style={{ color: 'var(--ivory)', fontSize: '0.8rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px', opacity: 0.8 }}>Gurvinder Singh Tuli</p>
+            <a href="tel:+919501009689" style={{ color: 'var(--gold)', fontSize: '1.1rem', letterSpacing: '2px' }}>+91 95010 09689</a>
+          </div>
         </div>
         
         <div className="sans-font" style={{ fontSize: '0.8rem', color: 'var(--ivory)', opacity: 0.5, letterSpacing: '1px', marginTop: '20px' }}>

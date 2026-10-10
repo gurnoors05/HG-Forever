@@ -25,7 +25,7 @@ export default function Invocation() {
             <div>
               <h3 className="serif-font text-ivory" style={{ fontSize: '3rem', margin: '0', fontWeight: 'normal' }}>Harmeet Singh</h3>
               <p className="sans-font" style={{ color: 'var(--gold)', fontSize: '0.85rem', fontStyle: 'italic', margin: '10px 0', letterSpacing: '1px' }}>Son of</p>
-              <p className="sans-font" style={{ fontSize: '1rem', color: 'var(--ivory)', opacity: 0.9 }}>Gurwinder Singh Tuli & Kuljeet Kaur</p>
+              <p className="sans-font" style={{ fontSize: '1rem', color: 'var(--ivory)', opacity: 0.9 }}>Gurvinder Singh Tuli & Kuljeet Kaur</p>
             </div>
             
             <div className="sans-font" style={{ fontSize: '1.2rem', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--gold)', margin: '15px 0' }}>With</div>
