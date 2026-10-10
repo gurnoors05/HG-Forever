@@ -33,7 +33,7 @@ export function Blessings() {
 export function RSVP() {
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [name, setName] = useState('');
-  const [guests, setGuests] = useState('1');
+  const [guests, setGuests] = useState('');
   const [message, setMessage] = useState('');
 
   const events = [
@@ -138,6 +138,7 @@ export function RSVP() {
                     <input 
                       type="number" 
                       min="1" 
+                      placeholder="1"
                       value={guests}
                       onChange={(e) => setGuests(e.target.value)}
                       className="sans-font" 
