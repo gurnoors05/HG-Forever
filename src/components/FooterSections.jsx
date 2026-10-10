@@ -129,7 +129,7 @@ export function RSVP() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="sans-font" 
-                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', outline: 'none' }} 
+                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', outline: 'none', color: 'var(--chocolate)', backgroundColor: '#FFFFFF', fontSize: '1rem' }} 
                 />
                 
                 {!selectedEvents.includes('Unfortunately, I cannot attend') && (
@@ -141,7 +141,7 @@ export function RSVP() {
                       value={guests}
                       onChange={(e) => setGuests(e.target.value)}
                       className="sans-font" 
-                      style={{ width: '50px', border: 'none', textAlign: 'right', outline: 'none' }} 
+                      style={{ width: '60px', border: 'none', textAlign: 'right', outline: 'none', color: 'var(--chocolate)', backgroundColor: 'transparent', fontSize: '1rem', padding: '5px' }} 
                     />
                   </div>
                 )}
@@ -152,7 +152,7 @@ export function RSVP() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="sans-font" 
-                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', resize: 'none', outline: 'none' }}>
+                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', resize: 'none', outline: 'none', color: 'var(--chocolate)', backgroundColor: '#FFFFFF', fontSize: '1rem' }}>
                 </textarea>
                 
                 <button 
