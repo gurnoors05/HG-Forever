@@ -31,7 +31,11 @@ export function Blessings() {
 }
 
 export function RSVP() {
-  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedEvents, setSelectedEvents] = useState([]);
+  const [name, setName] = useState('');
+  const [guests, setGuests] = useState('1');
+  const [message, setMessage] = useState('');
+
   const events = [
     'Ring Ceremony',
     'Sukhmani Sahib Path',
@@ -40,6 +44,45 @@ export function RSVP() {
     'Reception',
     'Unfortunately, I cannot attend'
   ];
+
+  const handleEventToggle = (ev) => {
+    if (ev === 'Unfortunately, I cannot attend') {
+      setSelectedEvents(['Unfortunately, I cannot attend']);
+    } else {
+      let updated = selectedEvents.filter(e => e !== 'Unfortunately, I cannot attend');
+      if (updated.includes(ev)) {
+        updated = updated.filter(e => e !== ev);
+      } else {
+        updated.push(ev);
+      }
+      setSelectedEvents(updated);
+    }
+  };
+
+  const handleRSVPSubmit = (e) => {
+    e.preventDefault();
+    
+    // Format the WhatsApp message
+    let whatsappText = `*New RSVP for Wedding*\n\n`;
+    whatsappText += `*Name:* ${name || 'Not provided'}\n`;
+    whatsappText += `*Events Attending:* ${selectedEvents.join(', ')}\n`;
+    
+    if (!selectedEvents.includes('Unfortunately, I cannot attend')) {
+      whatsappText += `*Total Guests:* ${guests}\n`;
+    }
+    
+    if (message.trim()) {
+      whatsappText += `*Message:* ${message}\n`;
+    }
+
+    // Harmeet's number is +91 70090 67423
+    const phoneNumber = "917009067423";
+    const encodedText = encodeURIComponent(whatsappText);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div id="rsvp" style={{ backgroundColor: 'var(--ivory)', width: '100vw', margin: '0 calc(-50vw + 50%)', padding: '100px 0' }}>
@@ -57,31 +100,67 @@ export function RSVP() {
           <h2 className="text-burgundy serif-font" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: 'normal' }}>RSVP</h2>
           <p className="sans-font" style={{ color: 'var(--chocolate)', marginBottom: '3rem', fontSize: '1.1rem', opacity: 0.8 }}>We look forward to celebrating with you.</p>
 
-          <form onSubmit={(e) => e.preventDefault()} className="sans-font" style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <form onSubmit={handleRSVPSubmit} className="sans-font" style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
               <label style={{ display: 'block', marginBottom: '20px', color: 'var(--burgundy)' }}>Which wedding events will you be attending?</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                 {events.map((ev, i) => (
                   <label key={i} style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--chocolate)', cursor: 'pointer', fontSize: '1.05rem', opacity: 0.9 }}>
-                    <input type="radio" name="event" value={ev} checked={selectedEvent === ev} onChange={(e) => setSelectedEvent(e.target.value)} style={{ width: '20px', height: '20px', accentColor: 'var(--burgundy)' }} />
+                    <input 
+                      type="checkbox" 
+                      name="event" 
+                      value={ev} 
+                      checked={selectedEvents.includes(ev)} 
+                      onChange={() => handleEventToggle(ev)} 
+                      style={{ width: '20px', height: '20px', accentColor: 'var(--burgundy)' }} 
+                    />
                     {ev}
                   </label>
                 ))}
               </div>
             </div>
 
-            {selectedEvent && selectedEvent !== 'Unfortunately, I cannot attend' && (
+            {selectedEvents.length > 0 && (
               <div style={{ animation: 'fadeIn 0.5s forwards', display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px' }}>
-                <input type="text" placeholder="Enter your full name" className="sans-font" style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', outline: 'none' }} />
+                <input 
+                  type="text" 
+                  placeholder="Enter your full name" 
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="sans-font" 
+                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', outline: 'none' }} 
+                />
                 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 15px', borderRadius: '4px', border: '1px solid rgba(197,166,107,0.5)' }}>
-                  <span style={{ color: 'var(--chocolate)', opacity: 0.8 }}>Guests (including you)</span>
-                  <input type="number" min="1" defaultValue="1" className="sans-font" style={{ width: '50px', border: 'none', textAlign: 'right', outline: 'none' }} />
-                </div>
+                {!selectedEvents.includes('Unfortunately, I cannot attend') && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 15px', borderRadius: '4px', border: '1px solid rgba(197,166,107,0.5)' }}>
+                    <span style={{ color: 'var(--chocolate)', opacity: 0.8 }}>Guests (including you)</span>
+                    <input 
+                      type="number" 
+                      min="1" 
+                      value={guests}
+                      onChange={(e) => setGuests(e.target.value)}
+                      className="sans-font" 
+                      style={{ width: '50px', border: 'none', textAlign: 'right', outline: 'none' }} 
+                    />
+                  </div>
+                )}
 
-                <textarea placeholder="We would love to hear your wishes..." rows="4" className="sans-font" style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', resize: 'none', outline: 'none' }}></textarea>
+                <textarea 
+                  placeholder="We would love to hear your wishes..." 
+                  rows="4" 
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="sans-font" 
+                  style={{ width: '100%', padding: '15px', border: '1px solid rgba(197,166,107,0.5)', borderRadius: '4px', resize: 'none', outline: 'none' }}>
+                </textarea>
                 
-                <button className="sans-font" style={{ backgroundColor: 'var(--burgundy)', color: '#FFFFFF', padding: '16px', border: 'none', borderRadius: '4px', fontSize: '0.9rem', textTransform: 'uppercase', cursor: 'pointer', letterSpacing: '2px', marginTop: '10px', transition: 'background-color 0.3s' }} onMouseOver={(e) => e.target.style.backgroundColor = '#626749'} onMouseOut={(e) => e.target.style.backgroundColor = 'var(--burgundy)'}>
+                <button 
+                  type="submit"
+                  className="sans-font" 
+                  style={{ backgroundColor: 'var(--burgundy)', color: '#FFFFFF', padding: '16px', border: 'none', borderRadius: '4px', fontSize: '0.9rem', textTransform: 'uppercase', cursor: 'pointer', letterSpacing: '2px', marginTop: '10px', transition: 'background-color 0.3s' }} 
+                  onMouseOver={(e) => e.target.style.backgroundColor = '#626749'} 
+                  onMouseOut={(e) => e.target.style.backgroundColor = 'var(--burgundy)'}>
                   Send RSVP
                 </button>
               </div>
