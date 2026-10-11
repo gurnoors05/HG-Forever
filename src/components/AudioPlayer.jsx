@@ -48,7 +48,7 @@ export default function AudioPlayer({ forcePlay, isVisible }) {
   return (
     <div className={`floating-audio-player ${isVisible ? 'visible' : 'hidden'}`} onClick={togglePlay}>
       <audio ref={audioRef} loop>
-        <source src="/bg_music_piano_new.mp3" type="audio/mpeg" />
+        <source src="/bg_music.mp3" type="audio/mpeg" />
       </audio>
       
       <div className={`vinyl-record ${isSpinning ? 'spinning' : ''}`}>
